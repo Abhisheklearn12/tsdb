@@ -122,7 +122,10 @@ cargo test test_basic_operations -- --nocapture
 ---
 
 ## Example Output
-> ADD IMAGE here
+![Output Image](media/tsdb-output.png)
+
+![Output Image](media/tsdb-tests.png)
+
 
 Sample run (from `cargo run --release`):
 
