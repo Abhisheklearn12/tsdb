@@ -10,7 +10,7 @@
 
 * **Delta-of-Delta Timestamp Compression** - Compresses regular intervals to 1 bit per timestamp
 * **XOR-Based Float Compression** - Exploits similarity in consecutive values (12x compression)
-* **2-Hour Block Architecture** - Optimal compression efficiency (proven in paper)
+* **chunks of 2 hours of data** - Optimal compression efficiency (proven in paper)
 * **In-Memory Storage** - Sub-millisecond query latency
 * **Time Series Map (TSmap)** - Efficient O(1) lookups with fast scanning
 * **Correlation Analysis** - Find related metrics (PPMCC-based)
@@ -194,7 +194,7 @@ Example 6: Advanced features
    - Delta-of-delta timestamps (§4.1.1)
    - XOR float compression (§4.1.2)
    - 2-hour block design (§4.2)
-   - Write-through cache architecture (§1)
+   - Write-through cache (§1)
 
 #### Phase 2: Implementing Compression (§4.1)
 1. **BitWriter/BitReader** - Built primitives to write individual bits (not byte-aligned)
@@ -476,19 +476,16 @@ let host = shard_to_host[shard_id];
 - Replace direct function calls with **gRPC/Thrift** APIs
 - Implement streaming writes (clients buffer 1 minute on failure)
 
-### 3. **Paxos-Based Shard Management** (Paper §4.4)
-- Use consensus algorithm to assign shards to hosts
-- Automatic failover on node crash (30 second target)
 
-### 4. **Persistent Storage Integration** (Paper §4.3)
+### 3. **Persistent Storage Integration** (Paper §4.3)
 - Write to **GlusterFS/HDFS** every 2 hours
 - Implement **checkpoint files** to mark successful flushes
 
-### 5. **Decompression Engine**
+### 4. **Decompression Engine**
 - Currently only compresses (educational focus)
 - Add `BitReader` implementation to read compressed blocks
 
-### 6. **Advanced Tools** (Paper §5)
+### 5. **Advanced Tools** (Paper §5)
 - **Correlation search** with parallel PPMCC across shards
 - **Horizon charts** visualization
 - **Automatic rollup** jobs (aggregate old data)
