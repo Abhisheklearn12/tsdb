@@ -3,7 +3,8 @@
 
 **Note**: This is an educational implementation to deeply understand time series compression, in-memory storage optimization, and distributed monitoring systems. It implements the core algorithms from the paper.
 
-### It's just the poc to implement this concept in my main Database project.
+### It's just the poc to implement this concept in my main Database project and I really enjoyed every bit of this.
+### Readme will keep on updating as I rectify and filled my knowledge gaps.
 ---
 
 ## Features
